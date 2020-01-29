@@ -1,0 +1,6 @@
+FROM ubuntu:latest
+MAINTAINER NANDHA RAM NANDHAVIGNESH2009@GMAIL.COM
+RUN apt-get update -y && apt-get install apache2 -y
+# CMD echo "hello world"
+COPY index.html /var/www/index.html
+ADD https://www.free-css.com/assets/files/free-css-templates/download/page249/green-special.zip
