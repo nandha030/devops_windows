@@ -1,0 +1,152 @@
+print "welcome to new world of python. version 2.7.16"
+
+nano print_hello.py
+
+docker build -t pythontest_270119 .
+
+Volumes:
+
+remote storage 
+shared storage 
+persistence
+
+Bind Mounts:
+obscures existing content (shows only the current user file system)
+sharable 
+a file/Dir on host file system
+persistence
+
+create file outside the conatiners writable layer
+
+curl -L "https://github.com/docker/compose/release/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo mv /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
+sudo mv /usr/local/bin/docker-compose /usr/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+Compose -->
+
+allows to define multicontainer application 
+
+by creating a YAML page 
+
+docker-compose.yml
+
+docker-compose up to bring up the app in one go
+
+root@administrator-VirtualBox:~# docker-compose --help
+Define and run multi-container applications with Docker.
+
+Usage:
+  docker-compose [-f <arg>...] [options] [COMMAND] [ARGS...]
+  docker-compose -h|--help
+
+Options:
+  -f, --file FILE             Specify an alternate compose file
+                              (default: docker-compose.yml)
+  -p, --project-name NAME     Specify an alternate project name
+                              (default: directory name)
+  --verbose                   Show more output
+  --log-level LEVEL           Set log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  --no-ansi                   Do not print ANSI control characters
+  -v, --version               Print version and exit
+  -H, --host HOST             Daemon socket to connect to
+
+  --tls                       Use TLS; implied by --tlsverify
+  --tlscacert CA_PATH         Trust certs signed only by this CA
+  --tlscert CLIENT_CERT_PATH  Path to TLS certificate file
+  --tlskey TLS_KEY_PATH       Path to TLS key file
+  --tlsverify                 Use TLS and verify the remote
+  --skip-hostname-check       Don't check the daemon's hostname against the
+                              name specified in the client certificate
+  --project-directory PATH    Specify an alternate working directory
+                              (default: the path of the Compose file)
+  --compatibility             If set, Compose will attempt to convert keys
+                              in v3 files to their non-Swarm equivalent
+
+Commands:
+  build              Build or rebuild services
+  bundle             Generate a Docker bundle from the Compose file
+  config             Validate and view the Compose file
+  create             Create services
+  down               Stop and remove containers, networks, images, and volumes
+  events             Receive real time events from containers
+  exec               Execute a command in a running container
+  help               Get help on a command
+  images             List images
+  kill               Kill containers
+  logs               View output from containers
+  pause              Pause services
+  port               Print the public port for a port binding
+  ps                 List containers
+  pull               Pull service images
+  push               Push service images
+  restart            Restart services
+  rm                 Remove stopped containers
+  run                Run a one-off command
+  scale              Set number of containers for a service
+  start              Start services
+  stop               Stop services
+  top                Display the running processes
+  unpause            Unpause services
+  up                 Create and start containers
+  version            Show the Docker-Compose version information
+  
+  root@administrator-VirtualBox:~# docker-compose ps
+ERROR:
+        Can't find a suitable configuration file in this directory or any
+        parent. Are you in the right directory?
+
+        Supported filenames: docker-compose.yml, docker-compose.yaml
+
+while creating yaml page all syntax should be in right place else we will get indentation error.
+
+version: '3.3'
+
+networks:
+  nw1:
+  nw2:
+
+services:
+  mycompdb:
+    image: mysql:5.7
+    container_name: mycompdb
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - nw1
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: mywordpress
+      MYSQL_USER: mywordpress
+      MYSQL_PASSWORD: mywordpress
+
+  mywordpress:
+    depends_on:
+      - mycompdb
+    image: wordpress:latest
+    ports:
+      - 8000:80
+    networks:
+      - nw1
+      - nw2
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: mycompdb:3306
+      WORDPRESS_DB_USER: mywordpress
+      WORDPRESS_DB_PASSWORD: mywordpress
+      WORDPRESS_DB_NAME: mywordpress
+
+volumes:
+  db_data: {}
+  
+  
+
+docker container run -d -p 80:80 -v /root/demo:/var/www/html httpd
+
+
+
+docker search mysql(image name)

@@ -1,0 +1,173 @@
+root@administrator-VirtualBox:~# docker -v
+Docker version 19.03.5, build 633a0ea838
+root@administrator-VirtualBox:~# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+root@administrator-VirtualBox:~# docker info
+Client:
+ Debug Mode: false
+
+Server:
+ Containers: 1
+  Running: 0
+  Paused: 0
+  Stopped: 1
+ Images: 1
+ Server Version: 19.03.5
+ Storage Driver: overlay2
+  Backing Filesystem: extfs
+  Supports d_type: true
+  Native Overlay Diff: true
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: b34a5c8af56e510852c35414db4c1f4fa6172339
+ runc version: 3e425f80a8c931f88e6d94a8c831b9d5aa481657
+ init version: fec3683
+ Security Options:
+  apparmor
+  seccomp
+   Profile: default
+ Kernel Version: 4.15.0-29-generic
+ Operating System: Ubuntu 16.04.5 LTS
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 2
+ Total Memory: 3.852GiB
+ Name: administrator-VirtualBox
+ ID: 5JBF:SJE4:6LAQ:D6TH:OP2Z:RFES:QFCM:D3A5:JGEX:5FTX:3W4V:TN3J
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ Registry: https://index.docker.io/v1/
+ Labels:
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+
+WARNING: No swap limit support
+
+
+Commands:
+  build       Build an image from a Dockerfile
+  history     Show the history of an image
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Display detailed information on one or more images
+  load        Load an image from a tar archive or STDIN
+  ls          List images
+  prune       Remove unused images
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rm          Remove one or more images
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+
+
+docker run -i -t hello-world
+
+root@administrator-VirtualBox:~# docker run -i -t hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+docker build -t pythontest_270119 .
+
+
+root@administrator-VirtualBox:~# cd /var/lib/d
+dbus/                dictionaries-common/ docker/              dpkg/
+dhcp/                doc-base/            docker-engine/
+root@administrator-VirtualBox:~# cd /var/lib/docker/
+builder/    containers/ network/    plugins/    swarm/      trust/
+buildkit/   image/      overlay2/   runtimes/   tmp/        volumes/
+root@administrator-VirtualBox:~# cd /var/lib/docker/
+builder/    containers/ network/    plugins/    swarm/      trust/
+buildkit/   image/      overlay2/   runtimes/   tmp/        volumes/
+root@administrator-VirtualBox:~# cd /var/lib/docker/containers/
+root@administrator-VirtualBox:/var/lib/docker/containers# ls -lh
+total 0
+root@administrator-VirtualBox:/var/lib/docker/containers# cd ..
+root@administrator-VirtualBox:/var/lib/docker# ls -lh
+total 48K
+drwx------  2 root root 4.0K Jan 24 14:07 builder
+drwx--x--x  4 root root 4.0K Jan 24 14:07 buildkit
+drwx------  2 root root 4.0K Jan 27 12:47 containers
+drwx------  3 root root 4.0K Jan 24 14:07 image
+drwxr-x---  3 root root 4.0K Jan 24 14:07 network
+drwx------ 19 root root 4.0K Jan 27 12:47 overlay2
+drwx------  4 root root 4.0K Jan 24 14:07 plugins
+drwx------  2 root root 4.0K Jan 27 11:48 runtimes
+drwx------  2 root root 4.0K Jan 24 14:07 swarm
+drwx------  2 root root 4.0K Jan 27 12:44 tmp
+drwx------  2 root root 4.0K Jan 24 14:07 trust
+drwx------  2 root root 4.0K Jan 24 14:07 volumes
+root@administrator-VirtualBox:/var/lib/docker#
+
+root@administrator-VirtualBox:~# docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+341d60baf4b8        bridge              bridge              local
+ed3cb51caa19        host                host                local
+534318dada85        none                null                local
+ null -- loop back talks to itself
+ 
+ host -- only to docker host ( l2)
+ bridge -- l3 layer
+ 
+ root@administrator-VirtualBox:~# docker network
+
+Usage:  docker network COMMAND
+
+Manage networks
+
+Commands:
+  connect     Connect a container to a network
+  create      Create a network
+  disconnect  Disconnect a container from a network
+  inspect     Display detailed information on one or more networks
+  ls          List networks
+  prune       Remove all unused networks
+  rm          Remove one or more networks
+
+Run 'docker network COMMAND --help' for more information on a command.
+
+ Get Logs: docker logs mynginx
+Start Container: docker start mynginx
+Stop Container: docker stop mynginx
+Delete Container: docker rm mynginx
+ 
+docker volume create <vol_name>
+
+check volume
+
+ 
+ after docker compose:
+ 
+ mysql > mysql -uroot -p3360 -p 
+ 
+  ll /var/lib/docker/volumes/root_db_data/_data/
+  
+  
+  docker network inspect root_nw1

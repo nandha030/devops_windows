@@ -1,0 +1,7 @@
+FROM python:2.7.16-stretch
+WORKDIR /usr/
+RUn pip install MySQL-python
+COPY . .
+CMD [ "python", "./print_hello.py"]
+
+

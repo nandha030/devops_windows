@@ -1,0 +1,28 @@
+ 189  git add
+  190  git add .
+  191  wget https://github.com/nandha030/devops_windows.git
+  192  git add .
+  193  ls -lh
+  194  git clone https://github.com/nandha030/devops_windows.git
+  195  git add .
+  196  ls -lh
+  197  cd devops_windows/
+  198  git status
+  199  cd ..
+  200  cp *.* devops_windows/
+  201  cd devops_windows/
+  202  ls -lh
+  203  ll
+  204  git add .
+  205  git diff
+  206  git diff origin --name-only
+  207  git commit -m "files added" devops_windows.git docker-compose.yml print_hello.py
+  208  git config --global user.email "nandhavignesh2010@gmail.com"
+  209  git config --global user.name "nandha030"
+  210  git commit -m "files added" devops_windows.git docker-compose.yml print_hello.py
+  211  git push -u origin master
+
+
+
+
+

@@ -1,0 +1,51 @@
+
+
+multiple application using diff containers
+
+
+get-docker ---> to install docker as a script
+
+sh get-docker.sh
+
+key info: signout and sign in back once installtion is done
+
+
+public ip : aws : 13.126.146.226
+
+
+
+administrator@administrator-VirtualBox:~$ docker pull karthick1808/karthicksever:latest
+latest: Pulling from karthick1808/karthicksever
+5c939e3a4d10: Already exists
+c63719cdbe7a: Already exists
+19a861ea6baf: Already exists
+651c9d2d6c4f: Already exists
+8efaa392b89f: Pull complete
+Digest: sha256:4b91c2409025ab31e69cffc30a1ed1a9cb4400afbd6aaec47f4c8d180e7b2f6e
+Status: Downloaded newer image for karthick1808/karthicksever:latest
+docker.io/karthick1808/karthicksever:latest
+
+
+ctl + P & ctl + Q to detach from container
+
+docker run -itd -p 81:80 username/image_name -------> we can download any image from docker hub 
+docker commit (first 2or3 digits of container id) username/image_name:latest
+
+docker push username/image_name:latest
+
+
+docker search mysql(image name)
+
+docker ps -a 
+
+docker inspect (container ID)
+
+docker swarm init
+
+docker swarm init  --advertise-addr 192.168.56.101
+
+3f0aae6ca4da        httpd               "httpd-foreground"        59 seconds ago       Up 58 seconds            80/tcp, 0.0.0.0:3360->3360/
+
+
+docker swarm join --token SWMTKN-1-45pqhu0ym82fdj3b91w5kbn0e09el6ad2nxb8adywm5xhv08xv-bvcs8w33ctrn5orxuuy634ohj 192.168.56.101:2377
+
